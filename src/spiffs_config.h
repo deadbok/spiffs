@@ -9,22 +9,24 @@
 #define SPIFFS_CONFIG_H_
 
 #include "c_types.h"
+#include "osapi.h"
 // ----------- 8< ------------
 // Following includes are for the linux test build of spiffs
 // These may/should/must be removed/altered/replaced in your target
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
 // ----------- >8 ------------
+#include "missing_dec.h"
 
 //Type definitions.
-typedef sint32_t s32_t;
-typedef uint32_t u32_t;
-typedef sint16_t s16_t;
-typedef uint16_t u16_t;
-typedef sint8_t s8_t;
-typedef uint8_t u8_t;
+typedef sint32 s32_t;
+typedef uint32 u32_t;
+typedef sint16 s16_t;
+typedef uint16 u16_t;
+typedef sint8 s8_t;
+typedef uint8 u8_t;
 
 // compile time switches
 
@@ -180,7 +182,7 @@ typedef uint8_t u8_t;
 #endif
 #if SPIFFS_TEST_VISUALISATION
 #ifndef spiffs_printf
-#define spiffs_printf(...)                printf(__VA_ARGS__)
+#define spiffs_printf(...)                os_printf(__VA_ARGS__)
 #endif
 // spiffs_printf argument for a free page
 #ifndef SPIFFS_TEST_VIS_FREE_STR
